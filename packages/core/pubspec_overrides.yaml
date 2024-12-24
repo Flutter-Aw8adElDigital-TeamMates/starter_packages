@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: data,security
+dependency_overrides:
+  data:
+    path: ..\\data
+  security:
+    path: ..\\security
