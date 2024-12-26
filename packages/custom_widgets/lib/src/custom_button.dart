@@ -41,7 +41,7 @@ class CustomElevatedButton extends StatelessWidget {
   final InteractiveInkFeatureFactory? splashFactory;
 
   const CustomElevatedButton({
-    super.key,
+    Key? key,
     required this.child,
     required this.onPressed,
     this.width,
@@ -64,7 +64,8 @@ class CustomElevatedButton extends StatelessWidget {
     this.margin,
     this.textStyle,
     this.splashFactory,
-  });
+  }) : assert((height ==null && padding !=null) || (height !=null && padding ==null), 'Provide only one of Height and Padding'),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +73,7 @@ class CustomElevatedButton extends StatelessWidget {
       padding: margin ?? EdgeInsets.zero,
       child: SizedBox(
         width: width ?? AppDimensions.fullWidth * 0.8,
-        height: height ?? AppDimensions.buttonHeight,
+         height: padding == null ? (height ?? AppDimensions.buttonHeight):null,
         child: ElevatedButton(
           onPressed: isEnabled ? onPressed : null,
           style: ButtonStyle(
@@ -94,10 +95,10 @@ class CustomElevatedButton extends StatelessWidget {
             // Elevation
             elevation: WidgetStateProperty.all(elevation ?? 2),
 
-            // Padding
-            padding: WidgetStateProperty.all(
-              padding ?? EdgeInsets.symmetric(horizontal: AppDimensions.spacing(16)),
-            ),
+            // // Padding
+            // padding: WidgetStateProperty.all(
+            //   padding ?? EdgeInsets.symmetric(horizontal: AppDimensions.spacing(16)),
+            // ),
 
             // Shape
             shape: WidgetStateProperty.all(
@@ -136,7 +137,10 @@ class CustomElevatedButton extends StatelessWidget {
                   color: iconColor ?? foregroundColor ?? Colors.white,
                 ),
               if (icon != null) SizedBox(width: AppDimensions.spacing(8)),
-              child,
+              Padding(
+                padding: height==null ? (padding?? const EdgeInsets.all(8.0)):EdgeInsets.zero,
+                child: child,
+              ),
             ],
           ),
         ),
