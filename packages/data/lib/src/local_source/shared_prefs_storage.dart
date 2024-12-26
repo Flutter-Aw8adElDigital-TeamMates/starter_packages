@@ -11,7 +11,7 @@ class SharedPrefsStorage {
     return _instance;
   }
 
-  Future<void> save(String key, dynamic value) async {
+  static Future<void> save(String key, dynamic value) async {
     if (value is String) {
       await _prefs!.setString(key, value);
     } else if (value is int) {
@@ -28,16 +28,16 @@ class SharedPrefsStorage {
     }
   }
 
-  dynamic get(String key) {
+  static dynamic get(String key) {
     final value = _prefs!.get(key);
     return value; // Returns the raw value (String, int, double, bool, or List<String>)
   }
 
-  Future<void> remove(String key) async {
+  static Future<void> remove(String key) async {
     await _prefs!.remove(key);
   }
 
-  Future<void> clear() async {
+  static Future<void> clear() async {
     await _prefs!.clear();
   }
 }

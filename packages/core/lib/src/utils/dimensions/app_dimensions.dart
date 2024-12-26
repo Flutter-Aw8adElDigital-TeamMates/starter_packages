@@ -30,6 +30,7 @@ class AppDimensions {
   static double get fontSizeLarge => _config.fontSizeLarge.sp;
   static double get fontSizeExtraLarge => _config.fontSizeExtraLarge.sp;
 
+
   // Custom font size
   static double fontSizeCustom(double size) {
     return size.sp;
