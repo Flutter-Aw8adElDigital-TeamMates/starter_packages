@@ -245,7 +245,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   });
                 },
                 icon: Icon(
-                  obscureText ? Icons.visibility_off : Icons.visibility,
+                  obscureText ? Icons.visibility : Icons.visibility_off,
                   color: Colors.grey,
                 ),
               )
