@@ -45,6 +45,7 @@ class AppDimensions {
   // Height and width utilities
   static double h(double value) => value.h;
   static double w(double value) => value.w;
+  static double r(double value) => value.r;
 
   // Full dimensions
   static double get fullWidth => screenWidth;
