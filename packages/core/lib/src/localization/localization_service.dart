@@ -118,7 +118,7 @@ class LocalizationService {
 
   bool isRTLLocale() => ['ar', 'he', 'fa', 'ur'].contains(locale);
 
-  String translate(String key) {
+  String tr(String key) {
     if (_localizedStrings.containsKey(key)) {
       return _localizedStrings[key]!;
     } else if (_fallbackStrings.containsKey(key)) {
@@ -134,11 +134,11 @@ class LocalizationService {
 
   String translateWithPlural(String key, int count) {
     final pluralKey = '$key.${count == 1 ? 'one' : 'other'}';
-    return translate(pluralKey);
+    return tr(pluralKey);
   }
 
   String translateWithArgs(String key, Map<String, String> args) {
-    String translation = translate(key);
+    String translation = tr(key);
     args.forEach((placeholder, value) {
       translation = translation.replaceAll('{$placeholder}', value);
     });
