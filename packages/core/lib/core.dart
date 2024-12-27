@@ -17,5 +17,6 @@ export 'src/localization/app_localization.dart';
 export 'src/enums.dart';
 export 'src/theme/base_theme_config.dart';
 export 'src/theme/theme_factory.dart';
+export 'src/localization/localization_service.dart';
 
 
