@@ -22,7 +22,7 @@ class CustomImageAvatar extends StatelessWidget {
         assert((image == null && icon !=null) ||(image != null && icon ==null  ),
         'Either provide image, or icon data, but not both.'),
         assert(icon !=null && isIcon,'if you set isIcon to true, you must provide icon'),
-        assert(image != null && image.length>0 && (isAsset || isNetwork), 'The iconUrl must not be null or empty.'),
+        assert(image != null && image.length>0 && ((isAsset || isNetwork) && !isIcon), 'The image must not be null or empty.'),
         assert((isAsset || isNetwork || isIcon),'at least on of them must be true'),
         super(key: key);
 
