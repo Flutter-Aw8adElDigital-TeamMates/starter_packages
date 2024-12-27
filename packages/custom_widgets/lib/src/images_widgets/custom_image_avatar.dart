@@ -9,25 +9,32 @@ class CustomImageAvatar extends StatelessWidget {
     Key? key,
     this.backgroundColor,
     required this.radius,
-    required this.icon,
+    this.image,
+    this.icon,
     this.imageColor,
     this.imageSize,
     this.applyMask = false,
     this.isAsset = false,
     this.isNetwork = true,
-  })  : assert((isAsset && !isNetwork) || (!isAsset && isNetwork),
-  'Either isAsset or isNetwork must be true, but not both.'),
-        assert(icon != null && icon.length>0, 'The iconUrl must not be null or empty.'),
+    this.isIcon = false,
+  })  : assert((isAsset && !isNetwork && !isIcon) || (!isAsset && isNetwork && !isIcon) || (!isAsset && !isNetwork && isIcon),
+  'Either isAsset or isNetwork or isIcon must be true, but not both.'),
+        assert((image == null && icon !=null) ||(image != null && icon ==null  ),
+        'Either provide image, or icon data, but not both.'),
+        assert(icon !=null && isIcon,'if you set isIcon to true, you must provide icon'),
+        assert(image != null && image.length>0, 'The iconUrl must not be null or empty.'),
         super(key: key);
 
   final Color? backgroundColor;
   final double radius;
-  final String? icon;
+  final String? image;
+   final IconData? icon;
   final Color? imageColor;
   final Size? imageSize;
   final bool applyMask;
   final bool isAsset;
   final bool isNetwork;
+  final bool isIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,7 @@ class CustomImageAvatar extends StatelessWidget {
       radius: radius,
       backgroundColor: backgroundColor ?? Colors.transparent,
       child: Center(
-        child: SizedBox(
+        child: isIcon? Icon(icon): SizedBox(
           height: imageSize?.height ?? radius * 2 - AppDimensions.w(0),
           width: imageSize?.width ?? radius * 2 - AppDimensions.w(0),
           child: Builder(
@@ -49,9 +56,9 @@ class CustomImageAvatar extends StatelessWidget {
   }
 
   Widget _buildAssetImage(BuildContext context) {
-    if (icon!.endsWith('.svg')) {
+    if (image!.endsWith('.svg')) {
       return SvgPicture.asset(
-        icon!,
+        image!,
         height: imageSize?.height ?? radius * 1.5 - AppDimensions.w(5),
         width: imageSize?.width ?? radius * 1.5 - AppDimensions.w(5),
         colorFilter: ColorFilter.mode(
@@ -66,7 +73,7 @@ class CustomImageAvatar extends StatelessWidget {
       );
     } else {
       return Image.asset(
-        icon!,
+        image!,
         height: imageSize?.height ?? radius * 1.5 - AppDimensions.w(5),
         width: imageSize?.width ?? radius * 1.5 - AppDimensions.w(5),
         fit: BoxFit.cover,
@@ -84,7 +91,7 @@ class CustomImageAvatar extends StatelessWidget {
               child: CustomCachedImage(
                 applyMask: applyMask,
                 imageSize: Size(radius * 2, radius * 2),
-                image: icon,
+                image: image,
                 fit: BoxFit.cover,
                 imageColor: imageColor,
                 isNetwork: true,
