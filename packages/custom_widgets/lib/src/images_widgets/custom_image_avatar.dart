@@ -17,13 +17,10 @@ class CustomImageAvatar extends StatelessWidget {
     this.isAsset = false,
     this.isNetwork = false,
     this.isIcon = false,
-  })  : assert((isAsset && !isNetwork && !isIcon) || (!isAsset && isNetwork && !isIcon) || (!isAsset && !isNetwork && isIcon),
-  'Either isAsset or isNetwork or isIcon must be true, but not both.'),
-        assert((image == null && icon !=null) ||(image != null && icon ==null  ),
-        'Either provide image, or icon data, but not both.'),
-        assert(icon !=null && isIcon,'if you set isIcon to true, you must provide icon'),
-        assert(image != null && image.length>0 && ((isAsset || isNetwork) && !isIcon), 'The image must not be null or empty.'),
-        assert((isAsset || isNetwork || isIcon),'at least on of them must be true'),
+  })  : assert((isIcon ? icon != null : true), 'If isIcon is set to true, then the icon cannot be null.'),
+        assert((isAsset || isNetwork ? (image != null && image.length>0) : true), 'If isAsset or isNetwork is set to true, then the image cannot be null or empty.'),
+        assert((isIcon ^ isAsset ^ isNetwork), 'Only one of isIcon, isAsset, or isNetwork can be true.'),
+        assert((image == null) != (icon == null), 'One of image or icon must be null, and the other must have a value.'),
         super(key: key);
 
   final Color? backgroundColor;
