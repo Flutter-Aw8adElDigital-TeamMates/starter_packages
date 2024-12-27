@@ -26,7 +26,7 @@ class CustomImageAvatar extends StatelessWidget {
   final Color? backgroundColor;
   final double radius;
   final String? image;
-   final IconData? icon;
+   final Icon? icon;
   final Color? imageColor;
   final Size? imageSize;
   final bool applyMask;
@@ -40,7 +40,7 @@ class CustomImageAvatar extends StatelessWidget {
       radius: radius,
       backgroundColor: backgroundColor ?? Colors.transparent,
       child: Center(
-        child: isIcon? Icon(icon): SizedBox(
+        child: isIcon? icon: SizedBox(
           height: imageSize?.height ?? radius * 2 - AppDimensions.w(0),
           width: imageSize?.width ?? radius * 2 - AppDimensions.w(0),
           child: Builder(
