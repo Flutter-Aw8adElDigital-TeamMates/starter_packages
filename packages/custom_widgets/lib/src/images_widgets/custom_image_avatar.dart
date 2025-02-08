@@ -12,7 +12,8 @@ class CustomImageAvatar extends StatelessWidget {
     this.image,
     this.icon,
     this.imageColor,
-    this.imageSize,
+    this.width,
+    this.height,
     this.applyMask = false,
     this.isAsset = false,
     this.isNetwork = false,
@@ -28,7 +29,8 @@ class CustomImageAvatar extends StatelessWidget {
   final String? image;
    final Icon? icon;
   final Color? imageColor;
-  final Size? imageSize;
+  final double? width;
+    final double? height;
   final bool applyMask;
   final bool isAsset;
   final bool isNetwork;
@@ -41,8 +43,8 @@ class CustomImageAvatar extends StatelessWidget {
       backgroundColor: backgroundColor ?? Colors.transparent,
       child: Center(
         child: isIcon? icon: SizedBox(
-          height: imageSize?.height ?? radius * 2 - AppDimensions.w(0),
-          width: imageSize?.width ?? radius * 2 - AppDimensions.w(0),
+          height:height ?? radius * 2 - AppDimensions.w(0),
+          width: width ?? radius * 2 - AppDimensions.w(0),
           child: Builder(
             builder: (BuildContext context) {
               return isAsset ? _buildAssetImage(context) : _buildNetworkImage(context);
@@ -57,8 +59,8 @@ class CustomImageAvatar extends StatelessWidget {
     if (image!.endsWith('.svg')) {
       return SvgPicture.asset(
         image!,
-        height: imageSize?.height ?? radius * 1.5 - AppDimensions.w(5),
-        width: imageSize?.width ?? radius * 1.5 - AppDimensions.w(5),
+        height: height ?? radius * 1.5 - AppDimensions.w(5),
+        width: width ?? radius * 1.5 - AppDimensions.w(5),
         colorFilter: ColorFilter.mode(
           imageColor ??
               (applyMask
@@ -72,8 +74,8 @@ class CustomImageAvatar extends StatelessWidget {
     } else {
       return Image.asset(
         image!,
-        height: imageSize?.height ?? radius * 1.5 - AppDimensions.w(5),
-        width: imageSize?.width ?? radius * 1.5 - AppDimensions.w(5),
+        height: height ?? radius * 1.5 - AppDimensions.w(5),
+        width: width ?? radius * 1.5 - AppDimensions.w(5),
         fit: BoxFit.cover,
       );
     }
@@ -88,7 +90,8 @@ class CustomImageAvatar extends StatelessWidget {
               color: backgroundColor,
               child: CustomCachedImage(
                 applyMask: applyMask,
-                imageSize: Size(radius * 2, radius * 2),
+                height: radius * 2,
+                width: radius * 2
                 image: image,
                 fit: BoxFit.cover,
                 imageColor: imageColor,
