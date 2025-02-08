@@ -91,7 +91,7 @@ class CustomImageAvatar extends StatelessWidget {
               child: CustomCachedImage(
                 applyMask: applyMask,
                 height: radius * 2,
-                width: radius * 2
+                width: radius * 2,
                 image: image,
                 fit: BoxFit.cover,
                 imageColor: imageColor,
