@@ -76,8 +76,8 @@ class CustomCachedImage extends StatelessWidget {
     this.isNetwork = true,
     this.fallbackSize = 100.0,
   })  : assert((isAsset && !isNetwork) || (!isAsset && isNetwork),
-  'Either isAsset or isNetwork must be true, but not both.'),
-        assert(image != null && image.length>0, 'The image must not be null or empty.');
+  'Either isAsset or isNetwork must be true, but not both.');
+        // assert(image != null && image.length>0, 'The image must not be null or empty.');
 
   @override
   Widget build(BuildContext context) {
