@@ -10,7 +10,9 @@ class CustomCachedImage extends StatelessWidget {
   final bool applyMask;
   final Color? imageColor;
   final String? image;
-  final Size? imageSize;
+  // final Size? imageSize;
+  final double? width;
+  final double? height;
   final Map<String, String>? httpHeaders;
   final ImageWidgetBuilder? imageBuilder;
   final PlaceholderWidgetBuilder? placeholder;
@@ -46,7 +48,8 @@ class CustomCachedImage extends StatelessWidget {
     this.applyMask = false,
     this.imageColor,
     required this.image,
-    this.imageSize,
+    this.width,
+     this.height,
     this.httpHeaders,
     this.imageBuilder,
     this.placeholder,
@@ -90,16 +93,16 @@ class CustomCachedImage extends StatelessWidget {
       case ImageType.svg:
         return SvgPicture.asset(
           image!,
-          height: imageSize?.height ?? AppDimensions.h(fallbackSize),
-          width: imageSize?.width ?? AppDimensions.w(fallbackSize),
+          height: height ?? AppDimensions.h(fallbackSize),
+          width: width ?? AppDimensions.w(fallbackSize),
           fit: fit ?? BoxFit.contain,
         );
       case ImageType.raster:
       default:
         return Image.asset(
           image!,
-          height: imageSize?.height ?? AppDimensions.h(fallbackSize),
-          width: imageSize?.width ?? AppDimensions.w(fallbackSize),
+          height: height ?? AppDimensions.h(fallbackSize),
+          width: width ?? AppDimensions.w(fallbackSize),
           fit: fit ?? BoxFit.cover,
         );
     }
@@ -110,8 +113,8 @@ class CustomCachedImage extends StatelessWidget {
       case ImageType.svg:
         return SvgPicture.network(
           image!,
-          height: imageSize?.height ?? AppDimensions.h(fallbackSize),
-          width: imageSize?.width ?? AppDimensions.w(fallbackSize),
+          height: height ?? AppDimensions.h(fallbackSize),
+          width: width ?? AppDimensions.w(fallbackSize),
           colorFilter: ColorFilter.mode(
               imageColor ??
                   (applyMask
@@ -151,8 +154,8 @@ class CustomCachedImage extends StatelessWidget {
                 fadeOutDuration: fadeOutDuration,
                 fadeInDuration: fadeInDuration,
                 fadeInCurve: fadeInCurve,
-                height: imageSize?.height ?? AppDimensions.h(fallbackSize),
-                width: imageSize?.width ?? AppDimensions.w(fallbackSize),
+                height: height ?? AppDimensions.h(fallbackSize),
+                width: width ?? AppDimensions.w(fallbackSize),
                 fit: fit,
                 alignment: alignment,
                 repeat: repeat,
