@@ -253,7 +253,20 @@ class RemoteService {
       errorMessage = responseData?[errorFieldKey];
     }else if(responseData?[errorFieldKey] is List<T>){
       errorMessage = responseData?[errorFieldKey][0];
-    }else{
+    } else if (responseData?[errorFieldKey] is Map<String, dynamic>) {
+      // Extract all error messages from nested object
+      List<String> errors = [];
+      responseData?[errorFieldKey].forEach((key, value) {
+        if (value is List) {
+          errors.addAll(value.map((e) => "$key: $e")); // Format key with its error message
+        } else if (value is String) {
+          errors.add("$key: $value");
+        }
+      });
+
+      errorMessage = errors.isNotEmpty ? errors.join("\n") : "Unknown error"; // Join errors
+    
+    } else{
       errorMessage = "unknown Error";
     }
     // final errorMessage = responseData?['message'] ?? 'Error ${response.statusCode}';
