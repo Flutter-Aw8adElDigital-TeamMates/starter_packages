@@ -19,5 +19,6 @@ class NoDataException implements Exception {
 
 class OtherException implements Exception {
   final String message;
-  OtherException(this.message);
+  final int statusCode;
+  OtherException(this.message,this.statusCode);
 }
