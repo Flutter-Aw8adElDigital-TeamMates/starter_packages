@@ -183,7 +183,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ):
           RichText(
             text: TextSpan(
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: TextStyle(fontSize: AppDimensions.fontSizeMedium, color: Colors.black),
               children: <TextSpan>[
                 TextSpan(text: "${widget.labelText} "),
                 TextSpan(
