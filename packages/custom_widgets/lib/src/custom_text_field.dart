@@ -167,7 +167,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         if (widget.labelText != null || widget.customFieldTitleWidget != null) ...<Widget>[
-          widget.customFieldTitleWidget ??
+          widget.customFieldTitleWidget !=null?widget.customFieldTitleWidget! :
+              !widget.isRequired?
               Text(
                 widget.labelText ?? "",
                 style: widget.isDimmed
@@ -179,7 +180,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   fontSize: AppDimensions.fontSizeMedium,
                   color: Colors.black,
                 ),
-              ),
+              ):
+          RichText(
+            text: TextSpan(
+              style: TextStyle(fontSize: 20, color: Colors.black),
+              children: <TextSpan>[
+                TextSpan(text: "${widget.labelText} "),
+                TextSpan(
+                  text: '*',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           SizedBox(height: AppDimensions.spacing(8)),
         ],
         SizedBox(

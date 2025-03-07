@@ -1,7 +1,8 @@
 abstract class Failure {
   final String message;
+  final int? statusCode;
 
-  const Failure(this.message);
+  const Failure(this.message,{this.statusCode});
 }
 
 class ServerFailure extends Failure {
@@ -23,5 +24,5 @@ class UnexpectedFailure extends Failure {
 }
 
 class OtherFailure extends Failure {
-  const OtherFailure(String message) : super(message);
+  const OtherFailure(String message,int statusCode) : super(message,statusCode: statusCode);
 }
