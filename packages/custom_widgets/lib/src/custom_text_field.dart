@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:core/core.dart' show AppDimensions, Validators;
-
+import 'package:flutter/services.dart';
 class CustomTextFormField extends StatefulWidget {
+  final List<TextInputFormatter>? textInputFormatters;
   final FocusNode? focusNode;
   final EdgeInsetsGeometry? contentPadding;
   final TextStyle? inputTextStyle;
@@ -103,6 +104,7 @@ class CustomTextFormField extends StatefulWidget {
     this.phoneMinLength,
     this.phoneMaxLength,
     this.phoneStartsWith,
+    this.textInputFormatters
   })  : assert(!isPassword || (passwordMinLength != null && passwordMustContainUppercase != null && passwordMustContainLowercase != null && passwordMustContainSpecialChar != null && passwordMustContainDigit != null),
   'If isPassword is true, all password validation parameters must be provided'),
         assert(!isPhone || (phoneMinLength != null && phoneMaxLength != null),
@@ -203,6 +205,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           width: widget.width ?? double.infinity,
           height: widget.height,
           child: TextFormField(
+            inputFormatters: widget.textInputFormatters,
             focusNode: widget.focusNode,
             initialValue: widget.initialText,
             keyboardType: widget.isMultiline
