@@ -241,6 +241,7 @@
         <entry key="dash_shield">
           <value>
             <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-3215796b2821be6bd7dc00442bc88b4587d441fc//lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-7e8e43c866a8f7285945d0c621383dcf5b139a9f//lib" />
             </list>
           </value>
@@ -396,6 +397,7 @@
         <entry key="freerasp">
           <value>
             <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freerasp-7.2.1/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freerasp-6.12.0/lib" />
             </list>
           </value>
@@ -476,6 +478,7 @@
         <entry key="interact">
           <value>
             <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-3215796b2821be6bd7dc00442bc88b4587d441fc/packags/interact/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-7e8e43c866a8f7285945d0c621383dcf5b139a9f/packags/interact/lib" />
             </list>
           </value>
@@ -1143,6 +1146,8 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-3215796b2821be6bd7dc00442bc88b4587d441fc//lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-3215796b2821be6bd7dc00442bc88b4587d441fc/packags/interact/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-7e8e43c866a8f7285945d0c621383dcf5b139a9f//lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_dash_shield_plugin-7e8e43c866a8f7285945d0c621383dcf5b139a9f/packags/interact/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/_fe_analyzer_shared-82.0.0/lib" />
@@ -1215,6 +1220,7 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_svg-2.1.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/fluttertoast-8.2.12/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freerasp-6.12.0/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freerasp-7.2.1/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freezed-2.5.8/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freezed-3.0.0-0.0.dev/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freezed_annotation-2.4.4/lib" />
