@@ -2,5 +2,4 @@
 dependency_overrides:
   data:
     path: ..\\data
-  security:
-    path: ..\\security
+
